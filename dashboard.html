@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-content">
+                    <i class="fas fa-shield-alt logo-icon"></i>
+                    <h1>Simonmed</h1>
+                </div>
+                <i class="fas fa-chevron-left toggle-sidebar"></i>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li class="menu-item">
+                        <a href="#" class="menu-item-content" data-page="dashboard-page">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-item-content" data-page="reports-page">
+                            <i class="fas fa-book-open"></i>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <div class="profile-info">
+                    <div class="profile-icon">D</div>
+            
+                </div>
+                <div class="logout-icon">
+                    <i class="fas fa-sign-out-alt"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div id="reports-page" class="page-content" style="display: none;">
+                <div class="page-header">
+                    <div class="breadcrumb">
+                        <i class="fas fa-book-open"></i>
+                        <span>Reports</span>
+                    </div>
+                    <h1>Reports</h1>
+                </div>
+                
+                <div class="reports-container">
+                    <div class="table-responsive">
+                        <table class="reports-table">
+                            <thead>
+                                <tr>
+                                    <th>Full Name</th>
+                                    <th>Report Type</th>
+                                    <th>Published On</th>
+                                    <th>View Report</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jane Doe</td>
+                                    <td>Mammogram + </td>
+                                    <td>14 May 25</td>
+                                    <td>
+                                        <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" class="action-link" title="View/Download">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>April Young</td>
+                                    <td>Mammogram + Heart </td>
+                                    <td>1 Feb 25</td>
+                                    <td>
+                                        <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" class="action-link" title="View/Download">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>Bone Health </td>
+                                    <td>02 April 25</td>
+                                    <td>
+                                        <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" class="action-link" title="View/Download">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="pagination">
+                        <button class="page-arrow" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span class="page-number active">1</span>
+                        <button class="page-arrow" disabled>
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <span class="pagination-info">Displaying 1-1 of 1</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="dashboard-page" class="page-content">
+                <header>
+                    <h1>Welcome!</h1>
+                </header>
+        </div>
+    </div>
+
+    <script>
+        // Check if user is authenticated
+        document.addEventListener('DOMContentLoaded', function() {
+            // For demo purposes, we'll use sessionStorage to track login status
+            // In a real application, you would check with your backend
+            const isAuthenticated = sessionStorage.getItem('isAuthenticated');
+            
+            // If not authenticated, redirect to login page
+            if (!isAuthenticated && !window.location.href.includes('login.html')) {
+                window.location.href = 'login.html';
+            }
+
+            // Logout functionality
+            const logoutBtn = document.querySelector('.logout-icon');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function() {
+                    sessionStorage.removeItem('isAuthenticated');
+                    window.location.href = 'login.html';
+                });
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
